@@ -59,4 +59,5 @@ def train_model(model, training_set, validation_set, epochs=10):
 def evaluate_model(model, dataset):
     # Performance of the model on the given dataset (training, validation, test)
     # [loss, accuracy]
-    return model.evaluate(dataset)
+    dataset_gen = MessageDataGenerator(rows=dataset, batch_size=20)
+    return model.evaluate(dataset_gen)
