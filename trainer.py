@@ -16,6 +16,7 @@ from config import test_rows        # testing
 
 
 class MessageDataGenerator(tf.keras.utils.Sequence):
+    """Keras data generator for the SMS Spam Collection Dataset"""
     def __init__(self, rows, batch_size):
         self.batch_size = batch_size
         self.rows = rows  # rows of data to use from the file
@@ -51,13 +52,17 @@ class MessageDataGenerator(tf.keras.utils.Sequence):
         return x, y
 
 
-def train_model(model, training_set, validation_set, epochs=10):
-    model.fit(training_data=training_set, validation_data=validation_set, epochs=epochs, verbose=1)
-    return model
+def train_model(model, epochs=10):
+    training_gen = MessageDataGenerator(training_rows, 20)
+    validation_gen = MessageDataGenerator(validation_rows, 20)
+    test_gen = MessageDataGenerator(test_rows, 20)
 
+    # Train model
+    model.fit(training_data=training_gen, validation_data=validation_gen, epochs=epochs, verbose=1)
 
-def evaluate_model(model, dataset):
-    # Performance of the model on the given dataset (training, validation, test)
-    # [loss, accuracy]
-    dataset_gen = MessageDataGenerator(rows=dataset, batch_size=20)
-    return model.evaluate(dataset_gen)
+    # Performance of the model on the given data_gen in the form: [loss, accuracy]
+    training_performance = model.evaluate(training_gen)
+    validation_performance = model.evaluate(validation_gen)
+    test_performance = model.evaluate(test_gen)
+
+    return model, training_performance, validation_performance, test_performance
