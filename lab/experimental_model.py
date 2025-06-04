@@ -1,6 +1,4 @@
 import tensorflow as tf
-import numpy as np
-import pandas as pd 
 
 from config import MAX_LEN
 from config import VOCAB_SIZE
@@ -29,7 +27,7 @@ def experimental_ham_spam_model(soal=64, noal=1, voa=0.01):
     """
 
     # Network architecture
-    input_layer = tf.keras.Input(shape=(MAX_LEN), name="input_layer")
+    input_layer = tf.keras.Input(shape=(MAX_LEN,), name="input_layer")
     embedding_layer = tf.keras.layers.Embedding(input_dim=VOCAB_SIZE, output_dim=128, input_length=MAX_LEN, name="embedding_layer")(input_layer) 
     lstm_layer = tf.keras.layers.LSTM(soal, return_sequences=True, name="lstm_layer")(embedding_layer) 
     attention_input = lstm_layer
