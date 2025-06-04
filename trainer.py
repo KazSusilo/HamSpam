@@ -58,7 +58,7 @@ def train_model(model, epochs=10):
     test_gen = MessageDataGenerator(test_rows, 20)
 
     # Train model
-    model.fit(training_data=training_gen, validation_data=validation_gen, epochs=epochs, verbose=1)
+    model.fit(training_gen, validation_data=validation_gen, epochs=epochs, verbose=1)
 
     # Performance of the model on the given data_gen in the form: [loss, accuracy]
     training_performance = model.evaluate(training_gen)

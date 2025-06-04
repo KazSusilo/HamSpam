@@ -15,7 +15,7 @@ def ham_spam_model():
     # output layer: Outputs probability distribution over 2 classes (ham, spam)
 
     # Network architecture
-    input_layer = tf.keras.Input(shape=(MAX_LEN), name="input_layer")
+    input_layer = tf.keras.Input(shape=(MAX_LEN,), name="input_layer")
     embedding_layer = tf.keras.layers.Embedding(input_dim=VOCAB_SIZE, output_dim=128, input_length=MAX_LEN, name="embedding_layer")(input_layer) 
     lstm_layer = tf.keras.layers.LSTM(32, return_sequences=True, name="lstm_layer")(embedding_layer) 
     attention_layer = tf.keras.layers.Attention(name="attention_layer")([lstm_layer, lstm_layer]) 
