@@ -1,8 +1,8 @@
-# HamSpam
+# Ham vs Spam
 ![image](https://github.com/user-attachments/assets/0f752677-f3ff-4ff5-b3f6-321149729ee6)
 
 ## Summary
-HamSpam is a deep learning model built to detect and filter spam messages with high accuracy using attention-based neural networks. Trained on the [UCI SMS Spam Collection dataset](https://archive.ics.uci.edu/dataset/228/sms+spam+collection), the model distinguishes between ham (legitimate) and spam (unwanted) messages using tokenized message content and custom attention layers. After fine-tuning key hyperparameters, the model achieves 99.2% test accuracy.
+Designed a deep learning model built to detect and filter spam messages with high accuracy using attention-based neural networks. Trained on the [UCI SMS Spam Collection dataset](https://archive.ics.uci.edu/dataset/228/sms+spam+collection), the model distinguishes between ham (legitimate) and spam (unwanted) messages using tokenized message content and custom attention layers. After fine-tuning key hyperparameters, the model discerns spam with 99.2% accuracy.
 
 ## Model
 The architecture integrates both recurrent and attention mechanisms, designed to process and interpret sequential text data effectively:
